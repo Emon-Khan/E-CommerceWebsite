@@ -1,0 +1,4 @@
+__pycache__/
+ecomenv/
+db.sqlite3
+*.pyc
