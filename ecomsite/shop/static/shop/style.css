@@ -5,3 +5,21 @@
     font-weight: 800;
     color: red;
 }
+/* .page-link-red {
+    color: red;
+    background-color: white; 
+    border-color: blue; 
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.page-link-red.active {
+    color: white; 
+    background-color: red; 
+    border-color: red; 
+}
+
+.page-link-red:hover {
+    background-color: blue;
+    border-color: blue;
+    color: white;
+} */

@@ -15,6 +15,21 @@
 <body>
     <div class="container">
         <div class="row">
+            <div class="col-md-12">
+                <form class="card card-sm">
+                    <div class="card-body row no-gutters align-item-center">
+                        <div class="col">
+                            <input type="search" name="product-name" placeholder="Search Products"
+                                class="form-control form-control-borderless">
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-danger" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
             {% for product in product_objects %}
             <div class="col-md-3">
                 <div class="cart">
@@ -32,6 +47,25 @@
             </div>
             {% endfor %}
         </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-5">
+                <ul class="paginaton justify-content-center" style="display: inline-flex; list-style: none;">
+                    {% if product_objects.has_previous %}
+                        <li class="page-item" >
+                            <a class="page-link page-link-red" href="?page={{ product_objects.previous_page_number }}">Previous</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item active">
+                        <a class="page-link page-link-red" href="?page={{product_objects.number}}">{{ product_objects.number }}</a>
+                    </li>
+                    {% if product_objects.has_next %}
+                        <li class="page-item">
+                            <a class="page-link page-link-red" href="?page={{product_objects.next_page_number}}">next</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -40,7 +74,3 @@
 </body>
 
 </html>
-
-
-
-
