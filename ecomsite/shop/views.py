@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Products
 from django.core.paginator import Paginator
+from django.http import HttpResponseNotFound
 # Create your views here.
 
 def index(request):
@@ -16,4 +17,5 @@ def index(request):
 def detail(request, id):
     product_object = Products.objects.get(id = id)
     return render(request, 'shop/details.html', {'product_object':product_object})
-
+def favicon_not_found(request):
+    return HttpResponseNotFound()
