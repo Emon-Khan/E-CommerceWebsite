@@ -28,7 +28,8 @@
                             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                             <a class="nav-item nav-link" href="#">Features</a>
                             <button id="cart" type="button" data-html="true" class="btn btn-secondary"
-                                data-container="body" data-toggle="popover" data-placement="bottom" data-content="">
+                                data-container="body" data-toggle="popover" data-placement="bottom"
+                                data-content="dsgsssgsf">
                                 Cart(0)
                             </button>
                             <a class="nav-item nav-link disabled" href="#">Disabled</a>
@@ -66,7 +67,7 @@
                             ৳ {{product.price}}
                         </div>
                         <a href="/{{product.id}}" class="btn btn-danger">View</a>
-                        <a id="{{product.id}}" class="btn btn-info access-btn">Add to cart</a>
+                        <button id="{{product.id}}" class="btn btn-info access-btn">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -106,8 +107,8 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript">
         console.log('This is working');
-        var cart;
-        if (localStorage.getItem('cart') === null) {
+        let cart;
+        if (localStorage.getItem('cart') == null) {
             cart = {};
         } else {
             cart = JSON.parse(localStorage.getItem('cart'));
@@ -115,7 +116,7 @@
         // $(document).ready(function () {
         $(document).on('click', '.access-btn', function () {
             // console.log("The add to cart button is clicked");
-            let item_id = this.id.toString();
+            var item_id = this.id.toString();
             // console.log(item_id);
             if (cart[item_id] != undefined) {
                 cart[item_id]++;
@@ -123,8 +124,8 @@
                 cart[item_id] = 1;
             }
             console.log(cart);
-            localStorage.setItem(cart, JSON.stringify(cart));
-            document.getElementById("cart").innerHTML = "Cart" + Object.keys(cart).length;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            document.getElementById("cart").innerHTML = "Cart(" + Object.keys(cart).length + ")";
         });
         // });
         // $(function () {
@@ -133,12 +134,12 @@
         // });
         displayCart(cart);
         function displayCart(cart) {
-            var cartString = "";
+            let cartString = "";
             cartString += "<h5>This is your cart</h5>";
-            var cartIndex = 1;
-            for (var x in cart) {
+            let cartIndex = 1;
+            for (let x in cart) {
                 cartString += cartIndex;
-                cartString += document.getElementById("title" + x).innerHTML + "Qty:" + cart[x];
+                cartString += document.getElementById("title" + x).innerHTML + "Qty:" + cart[x] + "</br>";
                 cartIndex += 1;
             }
             document.getElementById("cart").setAttribute('data-content', cartString);
