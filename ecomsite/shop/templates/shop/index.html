@@ -59,13 +59,9 @@
                 <div class="cart">
                     <img class="card-img-top" src="{{product.image}}" alt="">
                     <div class="card-body">
-                        <div id="title{{product.id}}" class="card-title prdc-title">
-                            {{product.title|slice:":22"}}
-                            {% if product.title|length > 22 %}...{% endif %}
-                        </div>
-                        <div class="card-text prdc-price">
-                            ৳ {{product.price}}
-                        </div>
+                        <div id="title{{product.id}}" class="card-title prdc-title">{{product.title|slice:":22"}}
+                            {% if product.title|length > 22 %}...{% endif %}</div>
+                        <div id="price{{product.id}}" class="card-text prdc-price">{{product.price}}</div>
                         <a href="/{{product.id}}" class="btn btn-danger">View</a>
                         <button id="{{product.id}}" class="btn btn-info access-btn">Add to cart</button>
                     </div>
@@ -107,9 +103,9 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript">
         console.log('This is working');
-        let cart;
+        // let cart;
         if (localStorage.getItem('cart') === null) {
-            cart = {};
+            var cart = {};
         } else {
             cart = JSON.parse(localStorage.getItem('cart'));
         }
@@ -120,12 +116,14 @@
             // console.log(item_id);
             if (cart[item_id] != undefined) {
                 quantity = cart[item_id][0] + 1;
+                price = parseFloat(document.getElementById("price" + item_id).innerHTML) * quantity;
                 cart[item_id][0] = quantity;
+                cart[item_id][2] = price;
             } else {
                 quantity = 1;
-                name = document.getElementById("title"+item_id).innerHTML;
-                cart[item_id] = [quantity, name];
-
+                price = parseFloat(document.getElementById("price" + item_id).innerHTML);
+                name = document.getElementById("title" + item_id).innerHTML;
+                cart[item_id] = [quantity, name, price];
             }
             console.log(cart);
             localStorage.setItem('cart', JSON.stringify(cart));
@@ -145,7 +143,7 @@
                 let titleElement = document.getElementById("title" + x);
                 if (titleElement) {
                     cartString += cartIndex;
-                    cartString += titleElement.innerHTML + "Qty:" + cart[x][0]+"</br>";
+                    cartString += titleElement.innerHTML + "Qty:" + cart[x][0] + "</br>";
                     cartIndex += 1;
                 }
             }
