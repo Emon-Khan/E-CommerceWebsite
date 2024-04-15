@@ -19,3 +19,5 @@ def detail(request, id):
     return render(request, 'shop/details.html', {'product_object':product_object})
 def favicon_not_found(request):
     return HttpResponseNotFound()
+def checkout(request):
+    return render(request, 'shop/checkout.html')

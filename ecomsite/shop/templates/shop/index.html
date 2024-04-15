@@ -28,7 +28,8 @@
                             <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                             <a class="nav-item nav-link" href="#">Features</a>
                             <button id="cart" type="button" data-html="true" class="btn btn-secondary"
-                                data-container="body" data-toggle="popover" data-placement="bottom">
+                                data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+                                sagittis lacus vel augue laoreet rutrum faucibus.">
                                 Cart(0)
                             </button>
                             <a class="nav-item nav-link disabled" href="#">Disabled</a>
@@ -118,9 +119,13 @@
             var item_id = this.id.toString();
             // console.log(item_id);
             if (cart[item_id] != undefined) {
-                cart[item_id]++;
+                quantity = cart[item_id][0] + 1;
+                cart[item_id][0] = quantity;
             } else {
-                cart[item_id] = 1;
+                quantity = 1;
+                name = document.getElementById("title"+item_id).innerHTML;
+                cart[item_id] = [quantity, name];
+
             }
             console.log(cart);
             localStorage.setItem('cart', JSON.stringify(cart));
@@ -134,24 +139,19 @@
         displayCart(cart);
         function displayCart(cart) {
             let cartString = "";
-            cartString += "<div class='popover-content'><h5>This is your cart</h5>";
+            cartString += "<h5>This is your cart</h5>";
             let cartIndex = 1;
             for (let x in cart) {
                 let titleElement = document.getElementById("title" + x);
                 if (titleElement) {
                     cartString += cartIndex;
-                    cartString += titleElement.innerHTML + "Qty:" + cart[x] + "</br>";
+                    cartString += titleElement.innerHTML + "Qty:" + cart[x][0]+"</br>";
                     cartIndex += 1;
                 }
             }
-            cartString += "<a href='/checkout'><button class='btn btn-info' id='checkout'>Checkout</button></a></div>";
+            cartString += "<a class='btn btn-info' href='/checkout' id='checkout'>CheckOut</a>";
             document.getElementById("cart").setAttribute('data-content', cartString);
-            $('[data-toggle="popover"]').popover({
-                html: true,
-                content: function () {
-                    return $(this).data('content');
-                }
-            });
+            $('[data-toggle="popover"]').popover();
         };
     </script>
 </body>
