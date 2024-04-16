@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Products
+from .models import Products, Order
 from django.core.paginator import Paginator
 from django.http import HttpResponseNotFound
 # Create your views here.
@@ -19,3 +19,18 @@ def detail(request, id):
     return render(request, 'shop/details.html', {'product_object':product_object})
 def favicon_not_found(request):
     return HttpResponseNotFound()
+def checkout(request):
+    
+    if request.method == "POST":
+        items = request.POST.get('items', "")
+        name = request.POST.get('name', "")
+        email = request.POST.get('email', "")
+        address = request.POST.get('address', "")
+        city  = request.POST.get('city', "")
+        state  = request.POST.get('state', "")
+        zipcode  = request.POST.get('zipcode', "")
+        total  = request.POST.get('total', "")
+        order = Order(items=items,name=name,email=email, address=address, city=city, state=state, zipcode=zipcode, total=total)
+        order.save()
+    
+    return render(request, 'shop/checkout.html')
