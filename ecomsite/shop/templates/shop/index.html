@@ -110,24 +110,28 @@
             cart = JSON.parse(localStorage.getItem('cart'));
         }
         // $(document).ready(function () {
+        let numberOfItems = Object.keys(cart).length;
+        document.getElementById("cart").innerHTML = "Cart(" + numberOfItems + ")";
         $(document).on('click', '.access-btn', function () {
             // console.log("The add to cart button is clicked");
-            var item_id = this.id.toString();
-            // console.log(item_id);
-            if (cart[item_id] != undefined) {
-                quantity = cart[item_id][0] + 1;
-                price = parseFloat(document.getElementById("price" + item_id).innerHTML) * quantity;
-                cart[item_id][0] = quantity;
-                cart[item_id][2] = price;
+            var itemId = this.id.toString();
+            // console.log(itemId);
+            if (cart[itemId] != undefined) {
+                quantity = cart[itemId][0] + 1;
+                price = parseFloat(document.getElementById("price" + itemId).innerHTML) * quantity;
+                cart[itemId][0] = quantity;
+                cart[itemId][2] = price;
             } else {
                 quantity = 1;
-                price = parseFloat(document.getElementById("price" + item_id).innerHTML);
-                name = document.getElementById("title" + item_id).innerHTML;
-                cart[item_id] = [quantity, name, price];
+                price = parseFloat(document.getElementById("price" + itemId).innerHTML);
+                name = document.getElementById("title" + itemId).innerHTML;
+                cart[itemId] = [quantity, name, price];
             }
             console.log(cart);
             localStorage.setItem('cart', JSON.stringify(cart));
-            document.getElementById("cart").innerHTML = "Cart(" + Object.keys(cart).length + ")";
+            numberOfItems = Object.keys(cart).length;
+            document.getElementById("cart").innerHTML = "Cart(" + numberOfItems + ")";
+            displayCart(cart);
         });
         // });
         // $(function () {
@@ -139,10 +143,10 @@
             let cartString = "";
             cartString += "<h5>This is your cart</h5>";
             let cartIndex = 1;
-            let cartObject = JSON.parse(localStorage.getItem('cart'))
+            let cartObject = JSON.parse(localStorage.getItem('cart'));
             for (item in cartObject) {
                 cartString += cartIndex + ". " + cartObject[item][1] + " Qty " + cartObject[item][0] + "</br>";
-                cartIndex+=1;
+                cartIndex += 1;
             }
             cartString += "<a class='btn btn-info' href='/checkout' id='checkout'>CheckOut</a>";
             document.getElementById("cart").setAttribute('data-content', cartString);
