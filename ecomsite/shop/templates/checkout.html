@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row my-3">
+    <div class="col-md-12">
+        <ul class="list-group" id="item_list">
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" id="items" name="items">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputName">Name</label>
+                    <input id="name" name="name" type="text" class="form-control" id="inputName" placeholder="Emon">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">Email</label>
+                    <input id="email" name="email" type="email" class="form-control" id="inputEmail"
+                        placeholder="rkemon94@gmail.com">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input id="address" name="address" type="text" class="form-control" id="inputAddress"
+                    placeholder="1234 Main St">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input id="city" name="city" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="state">State</label>
+                    <input id="state" name="state" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="zipcode">Zip</label>
+                    <input id="zipcode" name="zipcode" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="total">Ammount to be Paid</label>
+                    <input readonly="" type="text" id="total" class="form-control" name="total">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+<!-- {% block javascript %}
+{{ block.super }}
+{% load static %}
+<script src="{% static 'shop/checkout.js' %}"></script>
+{% endblock %} -->
