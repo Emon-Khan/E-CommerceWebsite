@@ -20,7 +20,7 @@
     document.getElementById("cart").innerHTML = "Cart(" + numberOfItems + ")";
     $(document).on('click', '.access-btn', function () {
         // console.log("The add to cart button is clicked");
-        var itemId = this.id.toString();
+        let itemId = this.id.toString();
         // console.log(itemId);
         if (cart[itemId] != undefined) {
             quantity = cart[itemId][0] + 1;
@@ -59,10 +59,10 @@
         let quantity = cart[item][0];
         let price = cart[item][2];
         total += cart[item][2];
-        itemString = `<li class="list-group-item">${name}<span class="badge badge-primary badge-pill">${quantity}</span><span class="badge badge-primary badge-pill">${price}</span></li>`;
+        itemString = `<li class="list-group-item d-flex justify-content-between align-items-center">${name}<span class="">${quantity}</span><span class="">${price}</span></li>`; //badge badge-primary badge-pill
         $('#item_list').append(itemString);
     }
-    totalPrice = `<li class="list-group-item d-flex justify-content-between align-items-center">Total<span>${total}</span></li>`;
+    totalPrice = `<li class="list-group-item d-flex justify-content-between align-items-center">Total<span class="text-primary font-weight-bold">${total}</span></li>`;
     $('#item_list').append(totalPrice);
     $('#items').val(JSON.stringify(cart));
     $('#total').val(total);

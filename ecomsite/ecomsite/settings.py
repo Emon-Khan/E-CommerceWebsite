@@ -121,7 +121,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = [
-    BASE_DIR /"shop"/ "static",
+    BASE_DIR / "shop" / "static",
 ]
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.

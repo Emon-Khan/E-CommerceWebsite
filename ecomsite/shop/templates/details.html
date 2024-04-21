@@ -4,28 +4,28 @@
     <div class="col-md-6">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{ product_object.image }}" alt="">
+                <img class="img-thumbnail" src=" {{ product_object.image }}" alt="">
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 h1">
                 {{ product_object.title }}
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                {{ product_object.price }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 h4 text-primary">
                 {{ product_object.discounted_price }}
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 text-style font-weight-light">
+                {{ product_object.price }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-3">
                 {{ product_object.product_description }}
             </div>
         </div>
