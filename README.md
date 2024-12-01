@@ -1,12 +1,23 @@
-# Movie Data RESTAPI
+# E-CommerceWebsite
 
-### Language- Python, DRF(Django Rest Framework)
-### Database- sqlite3
+E-CommerceWebsite is a practice project built with Django, a high-level Python web framework. The project uses SQLite3, the default database that comes with Django, to store data.
+
+
+
+
+## Prerequisites
+
+To run this project, you'll need:
+
+- Python (version 3.12.2 or higher)
+- Django (version 5.0 or higher)
+- SQLite3 (pre-installed with Python)
+
 ## Setup Instruction
 Step-1: Creating & activating venv Windows:
+
 You can name your virtual environment as you wish, but I would recommend naming it 'MovieEnv'. I've added 'MovieEnv' to my .gitignore file to prevent environment files from being pushed to the remote repository.
 
-Step-1: Creating & activating venv Windows:
 ```
 python -m venv env
 ./env/Scripts/activate
@@ -53,10 +64,10 @@ Solution:
   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-## Demo
-This project is actually created for doing some testing like, How a django project actually created?What is the folder structure?How to manage version control tools like github?What info should a developer need to add to his project and how to make clear documentation in 'README.md' file so that whoever wants to clone this project will have a total guideline for it? How to use DRF in Django project?And many other things.
+## Future Improvements
 
-Now let's see some of this project features along with explanations.
+  - Integration with a real database (e.g., PostgreSQL or MySQL)
+  - Adding payment gateway support
+  - Enhanced UI/UX with responsive design
+  - API support for mobile apps
 
-### Make endpoint
-In a normal django project we can create a superuser and using that credentials we can login into the admin  site.And there if we add content, content got added into the frontend.When we are using normal django we are using MVT(Model, View, Template) architecture.But when we are using DRF(Django Rest Framework) we create routers, seralizers to make endpoints.
